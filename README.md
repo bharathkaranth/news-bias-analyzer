@@ -84,7 +84,7 @@ flowchart LR
         --> S2[Text Preprocessing and Cleaning]
     end
 
-    subgraph T[Translation, Feature Engineering]
+    subgraph T[Translation and Feature Engineering]
         T1[Use Translation Scripts]
         --> T2[Feature Engineering]
     end
