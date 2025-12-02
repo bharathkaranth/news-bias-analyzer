@@ -415,7 +415,6 @@ flowchart TD
 | Dainik Jagran  | Hindi    |      4,268       |  03 hours  |
 | Public TV      | Kannada  |      5,059       |  04 hours  |
 | Dinamalar      | Tamil    |      4,869       |  03 hours  |
-| -------------- | -------- | ---------------- | ---------- |
 | Total          |          |     3,96,739     |            |
 
 *Note: Most of the articles scraped for The Times of India resulted in failure; hence the time taken is high, but the article count is very low.  
