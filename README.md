@@ -79,17 +79,17 @@ At a high level, the project is used in three phases:
 
 ```mermaid
 flowchart LR
-    subgraph S[Data Collection and Cleaning]
+    subgraph S[Data Collection & Cleaning]
         S1[Run Scraper Scripts]
         --> S2[Text Preprocessing and Cleaning]
     end
 
-    subgraph T[Translation and Feature Engineering]
+    subgraph T[Translation & Feature Engineering]
         T1[Use Translation Scripts]
         --> T2[Extensive Feature Engineering]
     end
  
-    subgraph M[Modeling and Bias Scoring]
+    subgraph M[Modeling & Bias Scoring]
         M1[Load the Robust Dataset]
         --> M2[Various Bias Scoring Methods]
         --> M3[Performing Weighted Ensemble]
