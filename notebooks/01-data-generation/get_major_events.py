@@ -12,7 +12,6 @@ end_year = 2025
 
 # Initialize list to collect dates info
 data = []
-
 # Get India holidays (default is observed holidays)
 india_holidays = holidays.India(years=range(start_year, end_year + 1))
 
