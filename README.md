@@ -79,23 +79,30 @@ At a high level, the project is used in three phases:
 
 ```mermaid
 flowchart LR
-    subgraph S[Scraping]
-        S1[Run scraper]
+    subgraph S[Data Collection and Cleaning]
+        S1[Run Scraper Scripts]
+        --> S2[Text Preprocessing and Cleaning]
+    end
+
+    subgraph T[Translation and Feature Engineering]
+        T1[Use Translation Scripts]
+        --> T2[Extensive Feature Engineering]
     end
  
-    subgraph M[Modeling / Bias Scoring]
-        M1[Load scraped]
-        --> M2[Text preprocessing]
-        --> M3[Feature engineering]
-        --> M4[bias scoring to MongoDB]
+    subgraph M[Modeling and Bias Scoring]
+        M1[Load the Robust Dataset]
+        --> M2[Various Bias Scoring Methods]
+        --> M3[Performing Weighted Ensemble]
+        --> M4[Save Bias Scored Articles to MongoDB]
     end
  
     subgraph V[Visualization]
-        V1[Extract from MongoDB]
-        --> V2[Charts & dashboards]
+        V1[Extract articles from MongoDB]
+        --> V2[Create Charts]
     end
  
-    S1 --> M1
+    S2 --> T1
+    T2 --> M1
     M4 --> V1
 ```
 
