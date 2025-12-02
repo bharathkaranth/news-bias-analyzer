@@ -1,4 +1,4 @@
-<img width="137" height="126" alt="image" src="https://github.com/user-attachments/assets/b89100d8-73cc-4236-a9d5-33971b324240" /># Project Title: Bias Detection in Indian News Media 
+# Project Title: Bias Detection in Indian News Media 
 
 
 ## Team Members 
