@@ -520,11 +520,11 @@ flowchart TD
     B --> C["Feature Extraction"]
 
     subgraph Methods["Bias Scoring Methods"]
-        M1["Keyword-based(lexicon matching)"]
-        M2["Sentiment Analysis(VADER + TextBlob)"]
-        M3["TF-IDF Similarity(cosine distance)"]
-        M4["BERT Embeddings(semantic similarity)"]
-        M5["Implicit Association(IAT-inspired patterns)"]
+        M1["Keyword-based (Lexicon Matching)"]
+        M2["Sentiment Analysis (VADER + TextBlob)"]
+        M3["TF-IDF Similarity (Cosine Distance)"]
+        M4["BERT Embeddings (Semantic Similarity)"]
+        M5["Implicit Association (IAT-inspired Patterns)"]
     end
 
     C --> M1
@@ -539,7 +539,7 @@ flowchart TD
     M4 --> D
     M5 --> D
 
-    D --> E["Final Bias Score(per dimension + overall)"]
+    D --> E["Final Bias Score (per dimension + overall)"]
 ```
 
 ### 12.2 Bias Scoring Methods – Detailed Tables
