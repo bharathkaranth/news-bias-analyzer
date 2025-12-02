@@ -1,27 +1,43 @@
-# News Bias Analyzer
+<img width="137" height="126" alt="image" src="https://github.com/user-attachments/assets/b89100d8-73cc-4236-a9d5-33971b324240" /># Project Title: Bias Detection in Indian News Media 
 
-Detect and analyze subtle and explicit biases in news articles across multiple Indian media outlets.
-This repository provides scrapers, preprocessing utilities, modeling notebooks, and a
-visualization pipeline to study how bias evolves over time, across topics, and during key events.
+
+## Team Members 
+- Girish S N (girishsn@iisc.ac.in)
+- Bharath Karanth A (bharathk@iisc.ac.in)
+- Saravanakumar R (saravanakum1@iisc.ac.in)
+- Anmol Gupta (anmolg@iisc.ac.in) 
 
 ---
 
-## 1. Project Overview
+## 1. Problem Statement 
 
-The goal of this project is to build an **end-to-end bias analysis pipeline** for news media:
+News media outlets are often accused of biased reporting across various categories. 
+With the rapid growth of digital news, readers are exposed to vast and diverse information at their fingertips, often with subtle biases. 
+Biased reporting can influence public opinion and societal harmony. 
+With increasing polarization and misinformation, unbiased reporting is critical. 
+There is a need for a solution that can analyze news articles for bias – offering transparent, multi-dimensional, and interpretable results. 
+This project seeks to provide researchers, fact-checkers, and the public with actionable insights into media bias in Indian journalism.  
+
+---
+
+## 2. Project Overview
+
+The goal of this project is to build an **end-to-end bias detection and analysis pipeline** for news media: 
 
 -   **Scrape** archives from multiple news organizations.
--   **Preprocess** and clean text with utilities tailored to the Indian news context.
--   **Detect and quantify bias** (political, gender, religious, caste, regional, etc.).
+-   **Preprocess** and **clean** text with utilities tailored to the Indian news context.
+-   **Translate** the articles in regional languages to English. 
+-   Perform extensive **feature engineering**. 
+-   **Detect** and **quantify** bias across categories – political, gender, religious, caste, regional, etc.
 -   **Store results in MongoDB** for downstream analysis.
 -   **Aggregate and visualize** long‑term trends and media‑wise patterns.
 
 This repository is organized around **exploratory research in notebooks**, grouped by stage
-(data generation, preprocessing, EDA, modeling, and evaluation/analysis).
+(data generation, data preprocessing, EDA, modeling, and evaluation/analysis).
 
 ---
 
-## 2. High‑Level Architecture
+## 3. High‑Level Architecture
 
 ```mermaid
 flowchart LR
@@ -35,13 +51,13 @@ flowchart LR
 
 ---
 
-## 3. Repository Structure
+## 4. Repository Structure
 
 Key top‑level directories/files:
 
 -   **`notebooks/`**
 
-    -   Jupyter notebooks organized by stage:
+    -   Jupyter notebooks / Python scripts organized by stage:
         -   `01-data-generation/` – scraping scripts for each news source.
         -   `02-data-preprocessing/` – cleaning and translation.
         -   `03-EDA/` – exploratory data analysis & feature exploration.
@@ -67,15 +83,20 @@ Key top‑level directories/files:
 
 ---
 
-## 4. End‑to‑End Workflow
+## 5. End‑to‑End Workflow
 
 At a high level, the project is used in three phases:
 
-1. **Data Collection** – Scraping article archives into CSVs / MongoDB.
-2. **Bias Modeling** – Running notebooks to engineer features and assign bias scores.
-3. **Exploratory Visualization** – Using the visualization pipeline to generate charts.
+1. **Data Collection** – Scraping the Indian news articles into CSV files.
+2. **Data Cleaning** – Performing the pre-processing and cleaning of the raw data.
+3. **Translation** – Performing the translation of the articles in regional languages to English.
+4. **Feature Engineering** – Extracting useful features out of the cleaned and the translated data. 
+5. **Bias Modeling** – Assigning bias scores across different categories, through various machine learning methods and ensemble techniques.
+6. **Exploratory Visualization** – Generating and analyzing trends and results through charts.
 
-### 4.1 Workflow Diagram
+---
+
+### 5.1 Workflow Diagram
 
 ```mermaid
 flowchart LR
@@ -112,9 +133,9 @@ flowchart LR
 
 ---
 
-## 5. Components in Detail
+## 6. Components in Detail
 
-### 5.1 Scraping (`notebooks/01-data-generation/`)
+### 6.1 Scraping (`notebooks/01-data-generation/`)
 
 -   **Base Template**: `notebooks/01-data-generation/base_news_scraper.py`
 
@@ -138,7 +159,7 @@ Each scraper typically:
 -   Calls `scrape_articles(...)` from the base template.
 -   Saves consolidated CSVs for downstream notebooks.
 
-### 5.2 Text Preprocessing (`utils_text_preprocessing.py`)
+### 6.2 Text Preprocessing (`utils_text_preprocessing.py`)
 
 Provides reusable utilities for **cleaning English news text in an Indian context**:
 
@@ -152,7 +173,7 @@ Provides reusable utilities for **cleaning English news text in an Indian contex
 
 These functions are imported and used across multiple notebooks for consistent preprocessing.
 
-### 5.3 Bias Modeling & Analysis (`notebooks/`)
+### 6.3 Bias Modeling & Analysis (`notebooks/`)
 
 The numbered notebooks (`01_...`, `02_...`, ..., `20_...`) typically cover:
 
@@ -175,7 +196,7 @@ events (e.g. conflicts, disasters, and major scientific or political milestones)
 
 Outputs from this stage are stored back in MongoDB and in CSVs under `data/`.
 
-### 5.4 Visualization & Analysis (notebooks)
+### 6.4 Visualization & Analysis (notebooks)
 
 Visualization and higher‑level analysis are performed directly in notebooks, mainly:
 
@@ -188,9 +209,9 @@ for bias trends over time, across outlets, and by dimension, including media com
 
 ---
 
-## 6. Installation & Setup
+## 7. Installation & Setup
 
-### 6.1 Prerequisites
+### 7.1 Prerequisites
 
 -   **Python**: 3.9+ recommended.
 -   **MongoDB**: running instance with:
@@ -198,7 +219,7 @@ for bias trends over time, across outlets, and by dimension, including media com
     -   Optionally a `test.articles` collection for backfilling publish dates.
 -   **Virtual environment** (recommended): `venv`, `conda`, or similar.
 
-### 6.2 Docker Setup for MongoDB
+### 7.2 Docker Setup for MongoDB
 
 The easiest way to run MongoDB locally is via Docker. A `docker-compose.yml` is provided:
 
@@ -233,7 +254,7 @@ flowchart LR
     C --> E["Browser admin UIhttp://localhost:8081"]
 ```
 
-### 6.3 Python Dependencies (Core, Non‑Exhaustive)
+### 7.3 Python Dependencies (Core, Non‑Exhaustive)
 
 From the current codebase, you will need at least:
 
@@ -256,7 +277,7 @@ If you later add a `requirements.txt`, you can switch to:
 pip install -r requirements.txt
 ```
 
-### 6.4 Configure MongoDB / Data Access
+### 7.4 Configure MongoDB / Data Access
 
 Most notebooks expect:
 
@@ -268,9 +289,9 @@ inside the notebooks.
 
 ---
 
-## 7. Usage
+## 8. Usage
 
-### 7.1 Run a Scraper (Example)
+### 8.1 Run a Scraper (Example)
 
 From the project root:
 
@@ -281,7 +302,7 @@ python notebooks/01-data-generation/scrape_times_of_india.py
 or any other site‑specific scraper under `notebooks/01-data-generation/`. Adjust years, cache
 directory, and conditions inside the script as needed.
 
-### 7.2 Work with Notebooks
+### 8.2 Work with Notebooks
 
 1. Start Jupyter or VS Code / Jupyter Lab in the project root.
 2. Open notebooks in `notebooks/` in numerical order as a guideline.
@@ -301,7 +322,7 @@ directory, and conditions inside the script as needed.
 5. Ensure final, bias‑scored articles are written to MongoDB and/or exported to
    `data/processed/` for downstream EDA and evaluation notebooks.
 
-### 7.3 Generate Visualizations from Notebooks
+### 8.3 Generate Visualizations from Notebooks
 
 Visualizations are produced interactively in notebooks:
 
@@ -314,7 +335,7 @@ paths configured inside the notebooks.
 
 ---
 
-## 8. Extending the Project
+## 9. Extending the Project
 
 Some ideas for extending this repository:
 
@@ -338,11 +359,11 @@ Some ideas for extending this repository:
 
 ---
 
-## 9. Scraping Strategy
+## 10. Scraping Strategy
 
 The project scrapes news articles from multiple Indian media outlets using two main approaches:
 
-### 9.1 Scraping Architecture
+### 10.1 Scraping Architecture
 
 ```mermaid
 flowchart TD
@@ -371,35 +392,41 @@ flowchart TD
     end
 ```
 
-### 9.2 Scraping Methods by Source
+### 10.2 Scraping Methods by Source
 
 | News Source        | Script                     | Language | Method                        | Archive/API URL Pattern                             |
 | ------------------ | -------------------------- | -------- | ----------------------------- | --------------------------------------------------- |
 | **Times of India** | `scrape_times_of_india.py` | English  | Archive (date)                | `/archivelist/year-{Y},month-{M},starttime-{N}.cms` |
 | **Indian Express** | `scrape_indian_express.py` | English  | Archive (date)                | `/archive/{Y}/{M}/{D}/`                             |
 | **Economic Times** | `scrape_economic_times.py` | English  | Archive (date)                | `/archivelist/year-{Y},month-{M},starttime-{N}.cms` |
+| **News18**         | `scrape_news18.py`         | English  | Archive (date)                | `/archivelist/year-{Y},month-{M},starttime-{N}.cms` |
 | **Dainik Jagran**  | `scrape_jagram.py`         | Hindi    | API (pagination)              | `api.jagran.com/.../news/national/{page}/{count}`   |
 | **Public TV**      | `scrape_publictv.py`       | Kannada  | Category pages                | `/category/states/karnataka/page/{N}/`              |
 | **Dinamalar**      | `scrape_dinamalar.py`      | Tamil    | Photos section (today-photos) | `/photos/today-photos/{article_id}`                 |
 
-### 9.3 Scraping Statistics
+### 10.3 Scraping Statistics
 
 | News Source    | Language | Articles Scraped | Time Taken |
 | -------------- | -------- | ---------------- | ---------- |
-| Times of India | English  |                  |            |
-| Indian Express | English  |                  |            |
-| Economic Times | English  |                  |            |
-| Dainik Jagran  | Hindi    |                  |            |
-| Public TV      | Kannada  |                  |            |
-| Dinamalar      | Tamil    |                  |            |
+| Times of India | English  |      2,023       |  80 hours* |
+| Indian Express | English  |     1,92,050     |  95 hours  |
+| Economic Times | English  |     1,38,785     |  80 hours  |
+| News18         | English  |      49,685      |  30 hours  |
+| Dainik Jagran  | Hindi    |      4,268       |  03 hours  |
+| Public TV      | Kannada  |      5,059       |  04 hours  |
+| Dinamalar      | Tamil    |      4,869       |  03 hours  |
+| -------------- | -------- | ---------------- | ---------- |
+| Total          |          |     3,96,739     |            |
+
+*Note: Most of the articles scraped for The Times of India resulted in failure; hence the time taken is high, but the article count is very low.  
 
 ---
 
-## 10. Translation Strategy
+## 11. Translation Strategy
 
 Non-English articles (Hindi, Kannada, Tamil) are translated to English before bias analysis.
 
-### 10.1 Translation Pipeline
+### 11.1 Translation Pipeline
 
 ```mermaid
 flowchart LR
@@ -439,7 +466,7 @@ flowchart LR
     P3 --> O3
 ```
 
-### 10.2 Translation Scripts
+### 11.2 Translation Scripts
 
 Scripts are located under `notebooks/02-data-preprocessing/02-data-translation/`:
 
@@ -449,7 +476,7 @@ Scripts are located under `notebooks/02-data-preprocessing/02-data-translation/`
 | `translate_kannada_to_english.py` | Kannada         | `kan_Knda`    | PUBLIC TV     | `translate_kannada` |
 | `translate_tamil_to_english.py`   | Tamil           | `tam_Taml`    | DINAMALAR     | `translate_tamil`   |
 
-### 10.3 Translation Model Details
+### 11.3 Translation Model Details
 
 | Attribute            | Value                               |
 | -------------------- | ----------------------------------- |
@@ -462,7 +489,7 @@ Scripts are located under `notebooks/02-data-preprocessing/02-data-translation/`
 | **Batch size**       | 2–5 articles                        |
 | **Max length**       | 384 tokens                          |
 
-### 10.4 Recommended Settings for Mac M1 Pro
+### 11.4 Recommended Settings for Mac M1 Pro
 
 For ~5000 Hindi articles on Mac M1 Pro (using MPS):
 
@@ -480,11 +507,11 @@ For ~5000 Hindi articles on Mac M1 Pro (using MPS):
 -   Monitor memory usage—M1 Pro has unified memory constraints
 -   Use the benchmark results to pick the fastest configuration
 
-## 11. Bias Scoring Methodology
+## 12. Bias Scoring Methodology
 
 The project uses multiple complementary methods to detect and score bias across 10 dimensions.
 
-### 11.1 Methodology Overview
+### 12.1 Methodology Overview
 
 ```mermaid
 flowchart TD
@@ -514,11 +541,11 @@ flowchart TD
     D --> E["Final Bias Score(per dimension + overall)"]
 ```
 
-### 11.2 Bias Scoring Methods – Detailed Tables
+### 12.2 Bias Scoring Methods – Detailed Tables
 
 Below, each table summarizes one method: what the notebook does, inputs/outputs, math intuition, and its role in this project.
 
-#### 11.2.1 Keyword Counting
+#### 12.2.1 Keyword Counting
 
 | Aspect       | Details                                                                                                                                |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -531,7 +558,7 @@ Below, each table summarizes one method: what the notebook does, inputs/outputs,
 | Contribution | Transparent first-layer **bias presence signal** per article and dimension; core feature for later models and visualizations.          |
 | Notes        | Sensitive to lexicon coverage; does not capture sarcasm, negation, or wider context.                                                   |
 
-#### 11.2.2 Stereotype Density
+#### 12.2.2 Stereotype Density
 
 | Aspect       | Details                                                                                                                             |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -544,7 +571,7 @@ Below, each table summarizes one method: what the notebook does, inputs/outputs,
 | Contribution | Flags **how much of the coverage is stereotyping** rather than just mentioning a group.                                             |
 | Notes        | Depends on how well stereotype lexicons are curated; extreme values possible with very few tokens.                                  |
 
-#### 11.2.3 Co-occurrence of Dimensions
+#### 12.2.3 Co-occurrence of Dimensions
 
 | Aspect       | Details                                                                                                      |
 | ------------ | ------------------------------------------------------------------------------------------------------------ |
@@ -557,7 +584,7 @@ Below, each table summarizes one method: what the notebook does, inputs/outputs,
 | Contribution | Captures **intersectional and multi-dimensional bias contexts** where several identities are jointly framed. |
 | Notes        | Binary: does not measure strength of association, only joint presence.                                       |
 
-#### 11.2.4 VADER Sentiment
+#### 12.2.4 VADER Sentiment
 
 | Aspect       | Details                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -570,7 +597,7 @@ Below, each table summarizes one method: what the notebook does, inputs/outputs,
 | Contribution | Indicates **emotional valence** around topics or groups, helping distinguish negative vs neutral coverage.                                |
 | Notes        | Tuned for social media English; may mis-handle irony, code-mixed text, or highly domain-specific language.                                |
 
-#### 11.2.5 TextBlob Subjectivity & Polarity
+#### 12.2.5 TextBlob Subjectivity & Polarity
 
 | Aspect       | Details                                                                                                                       |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -583,7 +610,7 @@ Below, each table summarizes one method: what the notebook does, inputs/outputs,
 | Contribution | Helps judge whether **biased language is expressed as opinionated commentary vs neutral reporting**.                          |
 | Notes        | Coarse-grained; not tailored to Indian news; best used together with other signals.                                           |
 
-#### 11.2.6 Emotion Detection
+#### 12.2.6 Emotion Detection
 
 | Aspect       | Details                                                                                            |
 | ------------ | -------------------------------------------------------------------------------------------------- |
@@ -596,7 +623,7 @@ Below, each table summarizes one method: what the notebook does, inputs/outputs,
 | Contribution | Reveals **emotional framing** of events and groups (e.g., fear-heavy rhetoric around a community). |
 | Notes        | Lexicon coverage matters; does not capture context or strength beyond presence/absence.            |
 
-#### 11.2.7 Discourse Analysis
+#### 12.2.7 Discourse Analysis
 
 | Aspect       | Details                                                                                                                                                   |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -609,7 +636,7 @@ Below, each table summarizes one method: what the notebook does, inputs/outputs,
 | Contribution | Captures **subtle framing**: whether a group is mainly portrayed as **doer** or **victim**, or if responsibility is obscured with passive voice.          |
 | Notes        | Depends on parser quality; can be noisy on long or complex news sentences.                                                                                |
 
-#### 11.2.8 Implicit Association
+#### 12.2.8 Implicit Association
 
 | Aspect       | Details                                                                                                                                            |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -622,7 +649,7 @@ Below, each table summarizes one method: what the notebook does, inputs/outputs,
 | Contribution | Provides a more **association-style bias signal**, closer to IAT ideas, beyond simple word counts.                                                 |
 | Notes        | Rule-based; limited to patterns explicitly encoded; may miss nuanced or negated constructions.                                                     |
 
-#### 11.2.10 Topic Classification
+#### 12.2.10 Topic Classification
 
 | Aspect       | Details                                                                                                                                                                                           |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -635,7 +662,7 @@ Below, each table summarizes one method: what the notebook does, inputs/outputs,
 | Contribution | Provides **topic context** (e.g., economy, crime, politics) so bias can be analyzed **within and across topics**.                                                                                 |
 | Notes        | Topic labels are approximate and need interpretation; topics can overlap.                                                                                                                         |
 
-#### 11.2.11 Ensemble Bias
+#### 12.2.11 Ensemble Bias
 
 | Aspect       | Details                                                                                                                                                                                                                |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -648,7 +675,7 @@ Below, each table summarizes one method: what the notebook does, inputs/outputs,
 | Contribution | Main **production-style bias indicator** used for plots and trend analysis; balances interpretability (keywords/TF-IDF) with semantic power (BERT).                                                                    |
 | Notes        | Assumes component scores are calibrated; weight choice affects sensitivity to each signal.                                                                                                                             |
 
-#### 11.2.12 Overall Bias Score Aggregation
+#### 12.2.12 Overall Bias Score Aggregation
 
 | Aspect       | Details                                                                                                                                                                               |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -661,17 +688,17 @@ Below, each table summarizes one method: what the notebook does, inputs/outputs,
 | Contribution | Provides a **single, comparable metric** for visualizations and for correlating with external indicators (e.g., RSF index).                                                           |
 | Notes        | Weights encode design choices; users may reweight based on their research focus.                                                                                                      |
 
-### 11.3 Ensemble Weights
+### 12.3 Overall Bias Score Calculation
 
-| Method            | Weight (with BERT) | Weight (without BERT) |
-| ----------------- | ------------------ | --------------------- |
-| Keyword Matching  | 0.30               | 0.40                  |
-| TF-IDF Similarity | 0.30               | 0.60                  |
-| BERT Embeddings   | 0.40               | 0.00                  |
+The overall bias score is a weighted average of individual dimension scores. 
 
-### 11.4 Overall Bias Score Calculation
+**Formula:**
 
-The overall bias score is a weighted average of individual dimension scores:
+```
+overall_bias_score = Σ (dimension_score × dimension_weight)
+```
+
+For example, the dimension_weight could be the following:
 
 | Dimension     | Weight |
 | ------------- | ------ |
@@ -682,13 +709,9 @@ The overall bias score is a weighted average of individual dimension scores:
 | Regional      | 0.15   |
 | Socioeconomic | 0.15   |
 
-**Formula:**
 
-```
-overall_bias_score = Σ (dimension_score × dimension_weight)
-```
 
-### 11.5 Bias Type Classification
+### 12.4 Bias Type Classification
 
 Each dimension also produces a categorical bias type:
 
@@ -703,7 +726,7 @@ Each dimension also produces a categorical bias type:
 
 ---
 
-## 12. Notes
+## 13. Notes
 
 -   This README intentionally focuses on **high‑level architecture and usage**.
 -   Many implementation details (model choices, feature definitions, evaluation protocol) live
@@ -711,13 +734,14 @@ Each dimension also produces a categorical bias type:
 
 ---
 
-## 13. Lexicon Reference
+## 14. Lexicon Reference
 
 The project uses a curated lexicon of bias‑related keywords across multiple dimensions.
-This lexicon is used for keyword‑based features and interpretability. The original HTML
-version lives in `lexicon.html`; a Markdown summary is provided below.
+This lexicon is used for keyword‑based features and interpretability. This forms the basis 
+of the calculation of the bias scores. The original HTML version lives in `lexicon.html`; 
+a Markdown summary is provided below.
 
-### 13.1 Lexicon‑based Bias Detection (Diagram)
+### 14.1 Lexicon‑based Bias Detection (Diagram)
 
 ```mermaid
 flowchart TD
@@ -727,7 +751,7 @@ flowchart TD
     D --> E["Bias features for modelsand rule‑based checks"]
 ```
 
-### 13.2 Gender keywords
+### 14.2 Gender keywords
 
 | Category                 | Keywords                                                                                            |
 | ------------------------ | --------------------------------------------------------------------------------------------------- |
@@ -736,7 +760,7 @@ flowchart TD
 | **Stereotypical female** | nurturing, submissive, sensitive, dependent, emotional, weak, homemaker, caretaker, family-oriented |
 | **Stereotypical male**   | tech-savvy, dominant, courageous, workaholic, strong, breadwinner, career-oriented, aggressive      |
 
-### 13.3 Religious keywords
+### 14.3 Religious keywords
 
 | Category                        | Keywords                                                                                            |
 | ------------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -750,7 +774,7 @@ flowchart TD
 | **Stereotypes – superstitious** | superstitious, backward, orthodox                                                                   |
 | **Stereotypes – conservative**  | conservative, traditional, rigid                                                                    |
 
-### 13.4 Caste keywords
+### 14.4 Caste keywords
 
 | Category                    | Keywords                                                                                                                                           |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -759,7 +783,7 @@ flowchart TD
 | **Stereotypes – elitist**   | elitist, privileged, entitled, superior                                                                                                            |
 | **Stereotypes – oppressed** | oppressed, discriminated, marginalized, subservient                                                                                                |
 
-### 13.5 Regional keywords
+### 14.5 Regional keywords
 
 | Category                   | Keywords                                                                                |
 | -------------------------- | --------------------------------------------------------------------------------------- |
@@ -772,7 +796,7 @@ flowchart TD
 | **Stereotypes – racist**   | chinky, chinese-looking, mongoloid                                                      |
 | **Stereotypes – backward** | backward, undeveloped, poor, illiterate                                                 |
 
-### 13.6 Socioeconomic keywords
+### 14.6 Socioeconomic keywords
 
 | Category                             | Keywords                                                                                        |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------- |
@@ -781,7 +805,7 @@ flowchart TD
 | **Stereotypes – elite disconnected** | out of touch, privileged, entitled                                                              |
 | **Stereotypes – poor negative**      | criminal, lazy, uneducated, burden                                                              |
 
-### 13.7 Political leaning keywords
+### 14.7 Political leaning keywords
 
 | Category          | Keywords                                                                                                                                                                                                                                                                                     |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -789,7 +813,7 @@ flowchart TD
 | **Right-leaning** | nationalism, patriotism, security, sovereignty, tradition, culture, heritage, values, order, capitalism, market economy, privatization, self-reliance, individualism, law and order, family values, hindu nationalism, national pride, strong defense, immigration control, free market      |
 | **Centrist**      | bipartisan, compromise, pragmatic, middle ground, consensus, balanced policy, moderation, collaboration, harmony, independent, neutral, unity, cooperation                                                                                                                                   |
 
-### 13.8 Age keywords
+### 14.8 Age keywords
 
 | Category        | Keywords                                                               |
 | --------------- | ---------------------------------------------------------------------- |
@@ -797,7 +821,7 @@ flowchart TD
 | **Old**         | elderly, senior, old, aged, geriatric, pensioner                       |
 | **Stereotypes** | entitled millennial, lazy youth, out of touch, senile, tech illiterate |
 
-### 13.9 Disability keywords
+### 14.9 Disability keywords
 
 | Category        | Keywords                                                                  |
 | --------------- | ------------------------------------------------------------------------- |
@@ -805,7 +829,7 @@ flowchart TD
 | **Mental**      | mental illness, depression, anxiety, psychiatric, mentally ill            |
 | **Stereotypes** | suffer from, victim of, confined to wheelchair, burden, helpless          |
 
-### 13.10 Urban/Rural keywords
+### 14.10 Urban/Rural keywords
 
 | Category        | Keywords                                                               |
 | --------------- | ---------------------------------------------------------------------- |
@@ -813,7 +837,7 @@ flowchart TD
 | **Rural**       | rural, village, countryside, agricultural, farming                     |
 | **Stereotypes** | backward village, uneducated rural, sophisticated urban, rural poverty |
 
-### 13.11 Language keywords
+### 14.11 Language keywords
 
 | Category               | Keywords                                                               |
 | ---------------------- | ---------------------------------------------------------------------- |
@@ -824,7 +848,7 @@ flowchart TD
 
 ---
 
-## 14. Bias Dimensions Summary
+## 15. Bias Dimensions Summary
 
 The project analyzes **10 bias dimensions** using keyword-based detection:
 
@@ -886,7 +910,7 @@ mindmap
 
 ---
 
-## 15. Research References & System Design Links
+## 16. Research References & System Design Links
 
 The following works informed the design of bias dimensions, lexicons, datasets, and evaluation strategies in this project:
 
@@ -903,7 +927,7 @@ The following works informed the design of bias dimensions, lexicons, datasets, 
 
 ---
 
-## 16. License & Usage Disclaimer
+## 17. License & Usage Disclaimer
 
 -   **Code License:** This repository is released under the **MIT License**. See the `LICENSE` file for full terms.
 -   **Educational & Research Use:** This project analyzes news bias on topics that can be politically and socially sensitive.
