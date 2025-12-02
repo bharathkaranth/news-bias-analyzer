@@ -78,6 +78,26 @@ Key top‑level directories/files:
 -   **`docker-compose.yml`**
 
     -   Optional MongoDB + Mongo Express setup for local experimentation.
+ 
+-   **`lexicon.md`**
+
+    -   A curated lexicon of bias‑related keywords in markdown format. This forms the basis of the calculation of the bias scores.
+ 
+-   **`lexicon.html`**
+
+    - PA curated lexicon of bias‑related keywords in html format. This forms the basis of the calculation of the bias scores.
+ 
+-   **`Canvas - Bias Detection in Indian News Media`**
+
+    -   Data Science Canvas for the project.
+ 
+-   **`Report - Bias Detection in Indian News Media`**
+
+    -   Report for the project.
+
+-   **`Presentation - Bias Detection in Indian News Media`**
+
+    -   Presentation for the project.
 
 -   **`README.md`** (this file)
 
