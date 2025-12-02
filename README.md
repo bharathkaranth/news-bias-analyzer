@@ -84,15 +84,18 @@ flowchart LR
         --> S2[Text Preprocessing and Cleaning]
     end
 
-    subgraph T[Translation and Feature Engineering]
-        T1[Use Translation Scripts]
-        --> T2[Feature Engineering]
+    subgraph T[Translation]
+        T1[Use Translation Scripts to Convert non-English articles to English]
+    end
+
+    subgraph F[Feature Engineering]
+        F1[Perform Extensive Feature Engineering]
     end
  
     subgraph M[Modeling & Bias Scoring]
         M1[Load the Robust Dataset]
         --> M2[Various Bias Scoring Methods]
-        --> M3[Performing Weighted Ensemble]
+        --> M3[Performing the Weighted Ensemble]
         --> M4[Save Bias Scored Articles to MongoDB]
     end
  
@@ -102,7 +105,8 @@ flowchart LR
     end
  
     S2 --> T1
-    T2 --> M1
+    T1 --> F1
+    F1 --> M1
     M4 --> V1
 ```
 
