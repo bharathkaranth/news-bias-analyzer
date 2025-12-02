@@ -86,7 +86,7 @@ flowchart LR
 
     subgraph T[Translation & Feature Engineering]
         T1[Use Translation Scripts]
-        --> T2[Extensive Feature Engineering]
+        --> T2[Feature Engineering]
     end
  
     subgraph M[Modeling & Bias Scoring]
