@@ -94,7 +94,7 @@ At a high level, the project is used in three phases:
 5. **Bias Modeling** – Assigning bias scores across different categories, through various machine learning methods and ensemble techniques.
 6. **Exploratory Visualization** – Generating and analyzing trends and results through charts.
 
----
+
 
 ### 5.1 Workflow Diagram
 
@@ -506,6 +506,8 @@ For ~5000 Hindi articles on Mac M1 Pro (using MPS):
 -   Keep `num_beams=1` unless you specifically need higher translation quality
 -   Monitor memory usage—M1 Pro has unified memory constraints
 -   Use the benchmark results to pick the fastest configuration
+
+---
 
 ## 12. Bias Scoring Methodology
 
@@ -937,3 +939,6 @@ The following works informed the design of bias dimensions, lexicons, datasets, 
     community, or media outlet.
 -   **Methodological Limitations:** Results depend on the scraped data, preprocessing choices, lexicons, and models. They
     should be interpreted as **model-based signals** to support critical analysis, not as definitive ground truth.
+
+
+---
